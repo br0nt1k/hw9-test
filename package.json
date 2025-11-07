@@ -1,11 +1,11 @@
 {
-  "name": "vanilla-app-template",
+  "name": "hw9-test",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/vanilla-app-template/",
+    "build": "vite build --base=/hw9-test/",
     "preview": "vite preview"
   },
   "devDependencies": {
