@@ -1,0 +1,8 @@
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 32px;
+}
