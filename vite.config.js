@@ -9,6 +9,8 @@ export default defineConfig(({ command }) => {
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
+
+    base: '/hw9-test/', 
     root: 'src',
     build: {
       sourcemap: true,
