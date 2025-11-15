@@ -3,7 +3,14 @@ import flatpickr from "flatpickr";
 // Додатковий імпорт стилів
 import "flatpickr/dist/flatpickr.min.css";
 
+// Описаний у документації
+import iziToast from "izitoast";
+// Додатковий імпорт стилів
+import "izitoast/dist/css/iziToast.min.css";
+
+
 const refs = {
+    input: document.querySelector("#datetime-picker"),
     startBtn: document.querySelector("[data-start]"),
     clockface: document.querySelector(".timer"),
     daysSpan: document.querySelector("[data-days]"),
@@ -23,9 +30,14 @@ const options = {
     onClose(selectedDates) {
         console.log(selectedDates[0]);
         userSelectedDate = selectedDates[0];
-        if (userSelectedDate <= new Date()) {
-            window.alert("Please choose a date in the future");
-            refs.startBtn.disabled = true;
+      if (userSelectedDate <= new Date()) {
+          iziToast.show({
+            title: 'Please choose a date in the future',
+            position: 'topRight',
+            color: 'red',
+          });
+          refs.startBtn.disabled = true;
+          return;
         } else {
             refs.startBtn.disabled = false;
         }
@@ -60,7 +72,8 @@ function addLeadingZero(value) {
 refs.startBtn.addEventListener('click', () => {
     if (intervalId) return;
     if (!userSelectedDate) return; 
-    refs.startBtn.disabled = true;
+  refs.startBtn.disabled = true;
+  refs.input.disabled = true;
     
 
   intervalId = setInterval(() => {
@@ -81,4 +94,3 @@ refs.startBtn.addEventListener('click', () => {
       
   }, 1000);
 });
-
